@@ -1,0 +1,3 @@
+<view class="wx-mask"  hidden="{{!isShow}}">
+	<image src="../../../images/tip1.png" mode="widthFix"></image>
+</view>

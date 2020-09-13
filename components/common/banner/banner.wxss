@@ -1,0 +1,25 @@
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal{
+     margin-bottom: 2rpx;
+}
+.swiper-box .wx-swiper-dot{
+    width:40rpx;
+    display: inline-flex;
+    height: 10rpx; 
+    margin-left: 20rpx;
+    justify-content:space-between;
+}
+.swiper-box .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1;  
+    background: rgba(255,255,255,0.8);
+    border-radius: 8rpx
+}
+.swiper-box .wx-swiper-dot-active::before{
+    background:rgba(244,0,0,0.8);    
+}
+
+.swiperWarp{position: relative;}
+
+.swiperWarp .s-dot{height: 60rpx;position: absolute;top: 30rpx;right: 30rpx;background: rgba(0,0,0,0.5);color:#fff;line-height: 60rpx;font-size: 32rpx;padding: 0px 30rpx;
+    border-radius: 30rpx;
+}
