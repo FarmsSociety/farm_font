@@ -25,8 +25,8 @@ Page({
       },
       callBack: (res) => {
         this.setData({
-          expertItem: res.records,
-          pageTotal: res.total
+          expertItem: res.data.records,
+          pageTotal: res.data.total
         });
       }
     };

@@ -4,7 +4,10 @@ const app = getApp()
 Page({
   data: {
     scienceItem:[],
+    scienceItem1:[],
     pageTotal:0,
+    pageNum:1,
+    pageSize:10,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -14,10 +17,11 @@ Page({
   },
   //获取科技服务
   getScienceList() {
+    let that = this;
     //加载轮播图
     var params = {
       domain: "wxdomain",
-      url: "/science/activity/list",
+      url: "/science/service/list",
       method: "GET",
       data: {
         pageNo: 1,
@@ -25,8 +29,21 @@ Page({
       },
       callBack: (res) => {
         if( res.status == 0 ){
-          this.setData({
-            scienceItem: res.data.records,
+          let list = that._formatListData(res.data.records);
+          for (var i = 0; i < list.length; i++) {
+            if( list[i]['serviceStatus'] == 1 ){
+              that.data.scienceItem.push( list[i] );
+              that.setData({
+                scienceItem: that.data.scienceItem,
+              });
+            }else if( list[i]['serviceStatus'] == 2 ){
+              that.data.scienceItem1.push( list[i] );
+              that.setData({
+                scienceItem1: that.data.scienceItem1,
+              });
+            }
+          }
+          that.setData({
             pageTotal: res.data.total
           });
         }
@@ -40,8 +57,13 @@ Page({
       url: '/pages/science/info?id=' + e.currentTarget.dataset.id,
     })
   },
-
-
+  _formatListData(list) {
+    return list.map((item) => {
+      var preacherIdentity = item.preacherIdentity;
+      item.preacherIdentity = preacherIdentity == 1 ? '专家' : (preacherIdentity == 1 ? '教授' : '普通人员');
+      return item;
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -15,14 +15,14 @@ Page({
    */
   onLoad: function (options) {
     // let id = options.id;
-    let id = '1283333804202258434';
+    let id = '1304429517329235969';
     this.setData({id: id});
     this.getScienceInfo();
   },
   getScienceInfo:function(){
     var params = {
       domain: "wxdomain",
-      url: "/science/activity/info",
+      url: "/science/service/info",
       method: "GET",
       data: {
         id: this.data.id,
@@ -36,6 +36,11 @@ Page({
       }
     };
     http.request(params);
+  },
+  toJoinActive:function(){
+    wx.navigateTo({
+      url: '/pages/science/sign?id=' + this.data.id,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

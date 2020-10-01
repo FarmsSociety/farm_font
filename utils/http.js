@@ -11,7 +11,7 @@ function request(params, isGetTonken) {
   //使用请求端口
   var baseDomain = (params.domain == "wxdomain") ? config.wxdomain : config.domain;
   if( params.domain == "wxdomain" ){
-    var contentType = params.method == "GET" ? 'application/x-www-form-urlencoded;charset=UTF-8' : 'application/x-www-form-urlencoded;charset=UTF-8';
+    var contentType = params.method == "GET" ? 'application/x-www-form-urlencoded;charset=UTF-8' : 'application/json;charset=UTF-8';
     var header = {
           'content-type': contentType,
         }
