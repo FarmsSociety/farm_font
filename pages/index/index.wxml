@@ -14,40 +14,40 @@
   <view class="grid col-2 plr15">
     <view class="pr15 mb30 pl15">
       <navigator url="/pages/science/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
-        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_1.png" class="image" mode="widthFix"></image></view>
-        <view class="fs30 pt15">活动招募</view>
+        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/icon/everydaySale.png" class="image" mode="widthFix"></image></view>
+        <view class="fs30 pt15">科技服务</view>
       </navigator>
     </view>
     <view class="pr15 mb30 pl15">
       <navigator url="/pages/expert/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
-        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_2.png" class="image" mode="widthFix"></image></view>
+        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/icon/everydaySale.png" class="image" mode="widthFix"></image></view>
         <view class="fs30 pt15">专家列表</view>
       </navigator>
     </view>
     <view class="pr15 mb30 pl15">
       <navigator  url="/pages/active/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
-        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_3.png" class="image" mode="widthFix"></image></view>
-        <view class="fs30 pt15">科技服务</view>
+        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/icon/everydaySale.png" class="image" mode="widthFix"></image></view>
+        <view class="fs30 pt15">活动招募</view>
       </navigator>
     </view>
 
     <view class="pr15 mb30 pl15">
       <navigator url="/pages/expert/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
-        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_4.png" class="image" mode="widthFix"></image></view>
+        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/icon/everydaySale.png" class="image" mode="widthFix"></image></view>
         <view class="fs30 pt15">会员风采</view>
       </navigator>
     </view>
 
     <view class="pr15 mb30 pl15">
       <navigator url="/pages/shop/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
-        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_5.png" class="image" mode="widthFix"></image></view>
+        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/icon/everydaySale.png" class="image" mode="widthFix"></image></view>
         <view class="fs30 pt15">会员商城</view>
       </navigator>
     </view>
 
     <view class="pr15 mb30 pl15">
-      <navigator url="/pages/user/user" hover-class="none" class="bg0 padding radius text-center shadow-blur">
-        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_6.png" class="image" mode="widthFix"></image></view>
+      <navigator url="/pages/center/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
+        <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/icon/everydaySale.png" class="image" mode="widthFix"></image></view>
         <view class="fs30 pt15">个人</view>
       </navigator>
     </view>

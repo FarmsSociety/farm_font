@@ -1,47 +1,20 @@
-var http = require("../../utils/http.js");
-var config = require("../../utils/config.js");
+// pages/science/info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id:0,
-    info:{},
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let id = options.id;
-    let id = '1304429517329235969';
-    this.setData({id: id});
-    this.getScienceInfo();
+
   },
-  getScienceInfo:function(){
-    var params = {
-      domain: "wxdomain",
-      url: "/science/service/info",
-      method: "GET",
-      data: {
-        id: this.data.id,
-      },
-      callBack: (res) => {
-        if( res.status == 0 ){
-          this.setData({
-            info: res.data,
-          });
-        }
-      }
-    };
-    http.request(params);
-  },
-  toJoinActive:function(){
-    wx.navigateTo({
-      url: '/pages/science/sign?id=' + this.data.id,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

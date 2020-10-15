@@ -1,4 +1,5 @@
 var config = require("config.js");
+
 //统一的网络请求方法
 function request(params, isGetTonken) {
   // 全局变量
@@ -8,25 +9,13 @@ function request(params, isGetTonken) {
     globalData.requestQueue.push(params);
     return;
   }
-  //使用请求端口
-  var baseDomain = (params.domain == "wxdomain") ? config.wxdomain : config.domain;
-  if( params.domain == "wxdomain" ){
-    var contentType = params.method == "GET" ? 'application/x-www-form-urlencoded;charset=UTF-8' : 'application/json;charset=UTF-8';
-    var header = {
-          'content-type': contentType,
-        }
-      
-  }else{
-      var contentType = params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=UTF-8';
-      var header = {
-            'content-type': contentType,
-            'Authorization': params.login ? undefined : wx.getStorageSync('token')
-          }
-  }
   wx.request({
-    url: baseDomain + params.url, //接口请求地址
+    url: config.domain + params.url, //接口请求地址
     data: params.data,
-    header: header,
+    header: {
+      // 'content-type': params.method == "GET" ? 'application/x-www-form-urlencoded' : 'application/json;charset=utf-8',
+      'Authorization': params.login ? undefined : wx.getStorageSync('token')
+    },
     method: params.method == undefined ? "POST" : params.method,
     dataType: 'json',
     responseType: params.responseType == undefined ? 'text' : params.responseType,
@@ -36,6 +25,7 @@ function request(params, isGetTonken) {
         if (params.callBack) {
           params.callBack(res.data);
         }
+
       } else if (res.statusCode == 500) {
         wx.showToast({
           title: "服务器出了点小差",

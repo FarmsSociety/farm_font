@@ -1,44 +1,19 @@
-var http = require("../../utils/http.js");
-var config = require("../../utils/config.js");
-const app = getApp()
+// pages/expert/index.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    expertItem:[],
-    pageTotal:0,
+
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getExpertList();
-  },
-  //获取科技服务
-  getExpertList() {
-    //加载轮播图
-    var params = {
-      domain: "wxdomain",
-      url: "/science/expert/list",
-      method: "GET",
-      data: {
-        pageNo: 1,
-        pageSize: 10
-      },
-      callBack: (res) => {
-        this.setData({
-          expertItem: res.data.records,
-          pageTotal: res.data.total
-        });
-      }
-    };
-    http.request(params);
-  },
-  //详情条状
-  toExpertDetail(e){
-    wx.navigateTo({
-      url: '/pages/expert/info?id=' + e.currentTarget.dataset.id,
-    })
-  },
 
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
