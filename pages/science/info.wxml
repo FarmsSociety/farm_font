@@ -1,20 +1,20 @@
-<view class="plr30">
+<view class="plr30" style="padding-bottom: 140rpx;">
 	<view class="ence-header flex ptb30">
 		<view class="base ence-header-img">
-			<view class="cu-avatar lg round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
+			<view class="cu-avatar lg round" style="background-image:url({{info.iconUrl}});"></view>
 		</view>
 		<view class="auto aic pl30">
-			<view class="ftc fs36">关于林业知识防护的</view>
-			<view class="fpc fs28">林业局发布</view>
+			<view class="ftc fs36">{{info.title}}</view>
+			<view class="fpc fs28">{{info.publisher}}</view>
 		</view>
 		<view class="wx">
 			<view class="align fs70"><text class="cuIcon-weixin lg text-green"></text></view>
 		</view>
 	</view>
 	<view class="ence-detail ptb30">
-		<view class="fpc fs30 mb20"><text class="cuIcon-location fs32 text-gray mr10"></text>陕西省安康市汉滨区安康大道</view>
-		<view class="fpc fs30 mb20"><text class="cuIcon-mobile fs32 text-gray mr10"></text>15229280307</view>
-		<view class="fpc fs30 mb20"><text class="cuIcon-remind fs32 text-gray mr10"></text>2020年12月21号-2020年12月22号</view>
+		<view class="fpc fs30 mb20"><text class="cuIcon-location fs32 text-gray mr10"></text>{{info.addr}}</view>
+		<view class="fpc fs30 mb20"><text class="cuIcon-mobile fs32 text-gray mr10"></text>{{info.phone}}</view>
+		<view class="fpc fs30 mb20"><text class="cuIcon-remind fs32 text-gray mr10"></text>起止时间：{{info.startTime}}-{{info.endTime}}</view>
 		<view class="fpc fs30 mb20"><text class="cuIcon-pic fs32 text-gray mr10"></text>活动图片</view>
 		<view class="fpc fs30 mb20">
 			<view class="bg-white">
@@ -24,11 +24,89 @@
 			</view>
 		</view>
 	</view>
-	<view class="intro">	
-		<view class="fs36 mb20 fw ftc">活动详情</view>
-		<view>ASDFSD</view>
-	</view>
+	<view class="intro mb50">	
+		<view class="cu-bar bg-white">
+			<view class="action sub-title" style="margin-left: 0rpx;">
+			  <text class="text-xl text-bold ftc">活动详情</text>
+			  <text class="bg-green"></text>
+			  <!-- last-child选择器-->
+			</view>
+		</view>
+		<view>
+			<rich-text nodes="{{info.title}}"></rich-text>
+		</view>
+	</view>	
+	<view class="intro mb50">	
+		<view class="cu-bar bg-white">
+			<view class="action sub-title" style="margin-left: 0rpx;">
+			  <text class="text-xl text-bold ftc">活动评价</text>
+			  <text class="bg-green"></text>
+			  <!-- last-child选择器-->
+			</view>
+		</view>
+		<view style="margin-left: -30rpx;margin-right: -30rpx;">
+			<view class="cu-list menu-avatar comment">
+			  <view class="cu-item">
+			    <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+			    <view class="content">
+			      <view class="text-grey">莫甘娜</view>
+			      <view class="text-gray text-content text-df">
+			        凯尔，你被自己的光芒变的盲目。
+			      </view>
+			      <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
+			        <view class="flex">
+			          <view>凯尔：</view>
+			          <view class="flex-sub">妹妹，你在帮他们给黑暗找借口吗?</view>
+			        </view>
+			      </view>
+			      <view class="margin-top-sm flex justify-between">
+			        <view class="text-gray text-df">2018年12月4日</view>
+			        <view>
+			          <text class="cuIcon-appreciatefill text-red"></text>
+			          <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+			        </view>
+			      </view>
+			    </view>
+			  </view>
+			  <view class="cu-item">
+			    <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+			    <view class="content">
+			      <view class="text-grey">凯尔</view>
+			      <view class="text-gray text-content text-df">
+			        妹妹，如果不是为了飞翔，我们要这翅膀有什么用?
+			      </view>
+			      <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
+			        <view class="flex">
+			          <view>莫甘娜：</view>
+			          <view class="flex-sub">如果不能立足于大地，要这双脚又有何用?</view>
+			        </view>
+			      </view>
+			      <view class="margin-top-sm flex justify-between">
+			        <view class="text-gray text-df">2018年12月4日</view>
+			        <view>
+			          <text class="cuIcon-appreciate text-gray"></text>
+			          <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+			        </view>
+			      </view>
+			    </view>
+			  </view>
+			</view>
+		</view>
+	</view>	
 </view>
-<view class="plr30 ptb20 fixed bottom left">
-	<navigator url="/pages/science/sign" class="cu-btn block bg-blue lg">报名参与活动</navigator>
+
+<view class="plr30 ptb20 fixed bg0 bottom left" wx-if="{{info.serviceStatus=='2'}}">
+	<view bindtap='toJoinActive' class="radius10 cu-btn block bg-blue lg">报名参与活动</view>
+</view>
+<view class="fixed bottom left bort" wx-if="{{info.serviceStatus=='1'}}">
+	<view class="box">
+	  <view class="cu-bar input">
+	    <view class="cu-avatar round" style="background-image:url(https://image.weilanwl.com/img/square-3.jpg);"></view>
+	    <view class="action">
+	      <text class="cuIcon-roundaddfill text-grey"></text>
+	    </view>
+	    <input class="solid-bottom" maxlength="300" cursor-spacing="10"></input>
+	    <button class="cu-btn bg-green shadow-blur">发送</button>
+	  </view>
+	</view>
 </view>

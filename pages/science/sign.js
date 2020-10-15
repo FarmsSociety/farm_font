@@ -1,6 +1,11 @@
+var http = require("../../utils/http.js");
+var config = require("../../utils/config.js");
 const app = getApp();
 Page({
   data: {
+    id:"",
+    avatar:"123213",
+
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     index: null,
@@ -59,6 +64,70 @@ Page({
     modalName: null,
     textareaAValue: '',
     textareaBValue: ''
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // let id = options.id;
+    let id = '1304429517329235969';
+    this.setData({ id: id });
+    // this.getScienceInfo();
+  },
+  formSubmit: function (e){
+    let signInfo = e.detail.value;
+    signInfo.sex = signInfo.sex ? 0 : 1;
+    signInfo.activityId = this.data.id;
+    signInfo.avatar = this.data.avatar;
+    if (signInfo.name == "") {
+      this.showMessModal("请输入参会人员姓名");
+      return false;
+    }
+    if (signInfo.identity == "") {
+      this.showMessModal("请输入参会人员身份证号");
+      return false;
+    }
+    if (signInfo.phoneNum == "") {
+      this.showMessModal("请输入参会人员联系电话");
+      return false;
+    }
+    if (signInfo.email == "") {
+      this.showMessModal("请输入参会人员邮箱");
+      return false;
+    }
+    if (signInfo.addr == "") {
+      this.showMessModal("请输入参会人员联系地址");
+      return false;
+    }
+    var params = {
+      domain: "wxdomain",
+      url: "/science/activity/join/activity",
+      method: "POST",
+      data: signInfo,
+      callBack: (res) => {
+        if (res.status == 0) {
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          });
+        } else {
+          wx.showToast({
+            title: '失败',
+            icon: 'error',
+            duration: 2000
+          });
+        }
+      }
+    };
+    http.request(params);
+  },
+  showMessModal:function(str){
+    wx.showModal({
+      title: '提示',
+      showCancel: false,
+      content: str
+    });
   },
   PickerChange(e) {
     console.log(e);

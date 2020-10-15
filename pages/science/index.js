@@ -3,42 +3,66 @@ var config = require("../../utils/config.js");
 const app = getApp()
 Page({
   data: {
-    indicatorDots: true,
-    indicatorColor: '#d1e5fb',
-    indicatorActiveColor: '#1b7dec',
-    autoplay: true,
-    interval: 2000,
-    duration: 1000,
-    indexImgs: [{imgUrl:"https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg"}],
-
-    mItem:[
-      {name:"科技服务", img:"../../images/icon/everydaySale.png", link:""},
-      {name:"活动招募", img:"../../images/icon/everydaySale.png", link:""},
-      {name:"会员风采", img:"../../images/icon/everydaySale.png", link:""},
-      {name:"会员商城", img:"../../images/icon/everydaySale.png", link:""}
-    ],
+    scienceItem:[],
+    scienceItem1:[],
+    pageTotal:0,
+    pageNum:1,
+    pageSize:10,
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getIndexImgs();
+    this.getScienceList();
   },
-  //加载轮播图
-  getIndexImgs() {
+  //获取科技服务
+  getScienceList() {
+    let that = this;
     //加载轮播图
     var params = {
-      url: "/indexImgs",
+      domain: "wxdomain",
+      url: "/science/service/list",
       method: "GET",
-      data: {},
+      data: {
+        pageNo: 1,
+        pageSize: 10
+      },
       callBack: (res) => {
-        this.setData({
-          indexImgs: res,
-          seq: res
-        });
+        if( res.status == 0 ){
+          let list = that._formatListData(res.data.records);
+          for (var i = 0; i < list.length; i++) {
+            if( list[i]['serviceStatus'] == 1 ){
+              that.data.scienceItem.push( list[i] );
+              that.setData({
+                scienceItem: that.data.scienceItem,
+              });
+            }else if( list[i]['serviceStatus'] == 2 ){
+              that.data.scienceItem1.push( list[i] );
+              that.setData({
+                scienceItem1: that.data.scienceItem1,
+              });
+            }
+          }
+          that.setData({
+            pageTotal: res.data.total
+          });
+        }
       }
     };
     http.request(params);
+  },
+  //详情条状
+  toScienceDetail(e){
+    wx.navigateTo({
+      url: '/pages/science/info?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  _formatListData(list) {
+    return list.map((item) => {
+      var preacherIdentity = item.preacherIdentity;
+      item.preacherIdentity = preacherIdentity == 1 ? '专家' : (preacherIdentity == 1 ? '教授' : '普通人员');
+      return item;
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

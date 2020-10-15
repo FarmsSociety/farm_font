@@ -149,3 +149,33 @@
   </block>
 </view>
 <wxs module="wxs" src="../../wxs/number.wxs" />
+<view class='fixed bottom left'>
+  <view class="cu-bar tabbar bg-white">
+    <navigator hover-class='none' url='/pages/shop/index' class="action">
+      <view class="cuIcon-cu-image">
+        <image src="../../images/tabbar/homepage-sel.png"></image>
+      </view>
+      <view class="text-gray">商城</view>
+    </navigator>
+    <navigator hover-class='none' url='/pages/category/category' class="action">
+      <view class="cuIcon-cu-image">
+        <image src="../../images/tabbar/category-sel.png"></image>
+      </view>
+      <view class="text-gray">分类</view>
+    </navigator>
+    <navigator hover-class='none' url='/pages/basket/basket' class="action">
+      <view class="cuIcon-cu-image">
+        <image src="../../images/tabbar/basket-sel.png"></image>
+        <view class="cu-tag badge">99</view>
+      </view>
+      <view class="text-gray">购物车</view>
+    </navigator>
+    <navigator hover-class='none' url='/pages/user/user' class="action">
+      <view class="cuIcon-cu-image">
+        <image src="../../images/tabbar/user-sel.png"></image>
+        <view class="cu-tag badge"></view>
+      </view>
+      <view class="text-gray">我的</view>
+    </navigator>
+  </view>
+</view>

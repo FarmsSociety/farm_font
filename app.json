@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/expert/index",
+    "pages/science/sign",
+    "pages/science/info",
+    "pages/science/index",
+    
+    "pages/expert/info",
     "pages/shop/index",
     "pages/center/index",
     "pages/active/index",
-    "pages/expert/info",
-    "pages/expert/index",
-    "pages/science/info",
-    "pages/science/index",
-    "pages/science/sign",
-    
     
     "pages/logs/logs",
     "pages/user/user",
