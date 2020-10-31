@@ -29,7 +29,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
 	"appid": "wx7da6aba6f4fc7bc9",
-	"projectname": "%E5%AE%89%E5%BA%B7%E6%9E%97%E5%AD%A6%E4%BC%9A",
+	"projectname": "%E5%AE%89%E5%BA%B7%E6%9E%97%E5%AD%A6%E4%BC%9AApp",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

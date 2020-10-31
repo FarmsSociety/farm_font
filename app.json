@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/active/index",
     "pages/expert/index",
     "pages/science/sign",
     "pages/science/info",
@@ -9,7 +10,6 @@
     "pages/expert/info",
     "pages/shop/index",
     "pages/center/index",
-    "pages/active/index",
     
     "pages/logs/logs",
     "pages/user/user",
