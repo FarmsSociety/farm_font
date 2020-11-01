@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/active/info",
     "pages/active/index",
+    "pages/index/index",
     "pages/expert/index",
     "pages/science/sign",
     "pages/science/info",

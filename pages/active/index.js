@@ -4,23 +4,16 @@ const app = getApp()
 Page({
   data: {
     nowActiveItem:[],
-    nowPage:{
-      total : 0,
-      page : 1,
-      size: 10,
-    },
-    oldActiveItem: [],
-    oldPage: {
-      total: 0,
-      page: 1,
-      size: 10,
-    },
+    total1: 0,
+    page1: 1,
+    size1: 10,
 
-    scienceItem: [],
-    scienceItem1: [],
-    pageTotal: 0,
-    pageNum: 1,
-    pageSize: 10,
+
+
+    oldActiveItem: [],
+    total2: 0,
+    page2: 1,
+    size2: 10,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -40,26 +33,55 @@ Page({
       url: "/science/activity/list",
       method: "GET",
       data: {
-        pageNo: that.nowPage.page,
-        pageSize: that.nowPage.size,
+        pageNo: that.data.page1,
+        pageSize: that.data.size1,
         activityStatus: 1,
       },
       callBack: (res) => {
         if (res.status == 0) {
           let list = that._formatListData(res.data.records);
           console.log(JSON.stringify( list ) );
-          // that.setData({
-          //   pageTotal: res.data.total
-          // });
+          that.setData({
+            nowActiveItem: list,
+            page1: res.data.total,
+            size1: res.data.size,
+          });
+        }
+      }
+    };
+    http.request(params);
+  },
+  //获取正在进行的活动
+  getOldActive() {
+    let that = this;
+    //加载轮播图
+    var params = {
+      domain: "wxdomain",
+      url: "/science/activity/list",
+      method: "GET",
+      data: {
+        pageNo: that.data.page2,
+        pageSize: that.data.size2,
+        activityStatus: 2,
+      },
+      callBack: (res) => {
+        if (res.status == 0) {
+          let list = that._formatListData(res.data.records);
+          console.log(JSON.stringify( list ) );
+          that.setData({
+            oldActiveItem: list,
+            page2: res.data.total,
+            size2: res.data.size,
+          });
         }
       }
     };
     http.request(params);
   },
   //详情条状
-  toScienceDetail(e) {
+  toActiveDetail(e) {
     wx.navigateTo({
-      url: '/pages/science/info?id=' + e.currentTarget.dataset.id,
+      url: '/pages/active/info?id=' + e.currentTarget.dataset.id,
     })
   },
   _formatListData(list) {
@@ -75,46 +97,4 @@ Page({
   onReady: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
