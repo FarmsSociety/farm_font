@@ -1,0 +1,7 @@
+/* 自定义导航样式 */
+.tabbar_box{
+    width: 1000rpx;
+    background: red;
+}
+
+/*自定义底部导航开始  */

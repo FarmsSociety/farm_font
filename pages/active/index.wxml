@@ -1,0 +1,43 @@
+  <!-- 列表展示 begin -->
+  <view class="itemBox2 p3p3">
+  	<view class="itemBox2-tit mb30">
+  		<view class="tit">正在进行中</view>
+  	</view>
+  	<view class="itemBox2-list radius20 mb30" wx:for="{{2}}">
+  		<view class="itemBox2-item mlr20 ptb20">
+  			<view class="radius10" style="border:1rpx solid #efefef;">
+	  			<view class="itemBox2-item-img"><image class="image" mode="aspectFill" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg"></image></view>
+	  			<view class="itemBox2-item-box plr20 ptb20">
+	  				<view class="fs30 mb10 fw ftc nowarp1">关于防止病虫害的科技讲坛</view>
+	  				<view class="fs28 mb20 nowarp1" style="color:red;">开始时间：2020年6月23日-2020年6月23日</view>
+	  				<view class="flex itemBox2-item-people">
+	  					<view class="base people"><image class="image" mode="aspectFill" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg"></image></view>
+	  					<view class="auto fs28 fw pl20"><text class="mr20">王小五</text><text>教授</text><text class="fr color2">立即报名</text></view>
+	  				</view>
+	  			</view>
+  			</view>
+  		</view>
+  	</view>
+  </view>
+  <!-- 列表展示 begin -->
+  <view class="itemBox1 p3p3">
+  	<view class="itemBox1-tit mb30">
+  		<view class="tit">正在进行中</view>
+  	</view>
+  	<view class="itemBox1-list radius20">
+  		<view class="itemBox1-item flex mlr30 ptb30" wx:for="{{6}}">
+  			<view class="auto itemBox1-item-box">
+  				<view class="fs30 mb10 fw ftc nowarp1">关于防止病虫害的科技讲坛</view>
+  				<view class="fs28 mb20 ftc nowarp1">开始时间：2020年6月23日</view>
+  				<view class="flex itemBox1-item-people">
+  					<view class="base people"><image class="image" mode="aspectFill" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg"></image></view>
+  					<view class="fs28 fw pl20"><text class="mr20">王小五</text><text>教授</text></view>
+  				</view>
+  			</view>
+  			<view class="base itemBox1-item-img">
+  				<image class="image" mode="aspectFill" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg"></image>
+  			</view>
+  		</view>
+  	</view>
+  </view>
+  <!-- 列表展示   end -->

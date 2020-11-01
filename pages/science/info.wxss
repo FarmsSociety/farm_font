@@ -1,0 +1,12 @@
+page{
+	background-color: #fff;
+}
+.ence-header{
+}
+.ence-header-img{
+	width: 96rpx;
+	height: 96rpx;
+}
+.ence-header{
+	border-bottom: 1px solid #efefef;
+}

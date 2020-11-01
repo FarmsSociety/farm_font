@@ -1,0 +1,25 @@
+<!--components/Dialog/dialog.wxml-->
+<template name="dialog"> 
+	<view class='wx_dialog_container' hidden="{{!isShow}}">
+	    <view class='wx-mask'></view>
+	    <view class='wx-dialog'>
+	        <view class='wx-dialog-title'>{{ diaTit }}</view>
+	        <view class='wx-dialog-content'>
+	        	<view class="headImg pt30 mb30">
+					<view class="headImg-item">
+						<view class="img active mb10"><image class="image" mode="widthFix" src="../../images/p_img5.jpg"></image></view>
+						<view class="h5 fpc">奔跑的乌龟</view>
+					</view>
+					<view class="headImg-item">
+						<view class="img mb10"><image class="image" mode="widthFix" src="../../images/p_icon1.png"></image></view>
+						<view class="h5 fpc">?</view>
+					</view>
+				</view>
+	        </view>
+	        <view class='wx-dialog-footer'>
+	          <view class='wx-dialog-btn' catchtap='_cancelEvent'>{{ cancelText }}</view>
+	          <view class='wx-dialog-btn' catchtap='_confirmEvent'>{{ confirmText }}</view>
+	        </view>
+	    </view>
+	</view>
+</template>
