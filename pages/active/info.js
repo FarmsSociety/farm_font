@@ -1,5 +1,6 @@
 var http = require("../../utils/http.js");
 var config = require("../../utils/config.js");
+const app = getApp();
 Page({
 
   /**
@@ -8,16 +9,20 @@ Page({
   data: {
     id:0,
     info:{},
-  },
+    commentItem:[],
 
+    uploadImg:"",
+    content:"",
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let id = options.id;
-    let id = '1321633664163172354';
+    let id = options.id;
+    // let id = '1321633664163172354';
     this.setData({id: id});
     this.getActiveInfo();
+    this.getActiveComment();
   },
   getActiveInfo:function(){
     var params = {
@@ -29,8 +34,33 @@ Page({
       },
       callBack: (res) => {
         if( res.status == 0 ){
+          //图片设置
+          var data = res.data;
+          var img = data['publicizeImgUrl'];
+          if( img ){
+            data['publicizeImgUrl'] = img.split(",");
+            console.log( data['publicizeImgUrl'] );
+          }
           this.setData({
-            info: res.data,
+            info: data,
+          });
+        }
+      }
+    };
+    http.request(params);
+  },
+  getActiveComment:function(){
+    var params = {
+      domain: "wxdomain",
+      url: "/science/evaluate/listByActivityId",
+      method: "GET",
+      data: {
+        activityId: this.data.id,
+      },
+      callBack: (res) => {
+        if( res.status == 0 ){
+          this.setData({
+            commentItem: res.data.records,
           });
         }
       }
@@ -39,55 +69,59 @@ Page({
   },
   toJoinActive:function(){
     wx.navigateTo({
-      url: '/pages/science/sign?id=' + this.data.id,
+      url: '/pages/active/sign?id=' + this.data.id,
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  ChooseImage() {
+    let that = this;
+    app.wxUploadImg(function (res, v) {
+      console.log( res );
+        that.setData({
+            uploadImg: res
+        });
+    });
+  },
+  formSubmit: function (e){
+    let _this = this;
+    let signInfo = e.detail.value;
+    signInfo.activityId = this.data.id;
+    signInfo.userId = wx.getStorageSync("userId");
+    if (signInfo.content == "") {
+      this.showMessModal("输入评论不能为空！");
+      return false;
+    }
+    var params = {
+      domain: "wxdomain",
+      url: "/science/evaluate/publish",
+      method: "POST",
+      data: signInfo,
+      callBack: (res) => {
+        if (res.status == 0) {
+          wx.showToast({
+            title: '发表成功',
+            icon: 'success',
+            duration: 2000
+          });
+          setTimeout(function(){
+            _this.getActiveComment();
+          }, 1200);
+        } else {
+          wx.showToast({
+            title: '发表失败',
+            icon: 'error',
+            duration: 2000
+          });
+        }
+      }
+    };
+    http.request(params);
+  },
+  showMessModal:function(str){
+    wx.showModal({
+      title: '提示',
+      showCancel: false,
+      content: str
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

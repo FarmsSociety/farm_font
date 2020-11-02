@@ -1,7 +1,9 @@
 <view class="cu-card case no-card mb30">
   <view class="cu-item shadow">
     <view class="image" style="width:auto;">
-      <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="widthFix"></image>
+      <template v-if="{{info.iconUrl.length>0}}">
+        <image src="{{info.iconUrl[0]}}" mode="widthFix"></image>
+      </template>
       <view class="cu-tag bg-blue">{{info.name}}</view>
       <view class="cu-bar bg-shadeBottom">
         <text class="text-cut">{{info.area}}</text>
@@ -9,16 +11,14 @@
     </view>
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
+        <view class="cu-avatar round lg" style="background-image:url({{info.avatar}}});"></view>
         <view class="content flex-sub">
           <view class="text-grey">{{info.name}}</view>
           <view class="text-gray text-sm flex justify-between">
             {{info.area}}
-            <view class="text-gray text-sm">
-              <text class="cuIcon-attentionfill margin-lr-xs"></text> 10
-              <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
-              <text class="cuIcon-messagefill margin-lr-xs"></text> 30
-            </view>
+          </view>
+          <view class="text-gray text-sm flex justify-between">
+            {{info.description}}
           </view>
         </view>
       </view>
@@ -35,49 +35,31 @@
 </scroll-view>
   <block wx:if="{{TabCur==0}}">
   <view class="plr30 bort bg0 ptb30">
-      <rich-text nodes="{{info.content}}"></rich-text>
+      <rich-text nodes="{{info.expertDetails}}"></rich-text>
   </view>
   </block>
   <block wx:if="{{TabCur==1}}">
   <view class="bg0">
-  	<view class="cu-list menu-avatar comment solids-top">
-        <view class="cu-item">
-          <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+  	<view class="cu-list menu-avatar comment solids-top" wx:if="{{commentItem.length>0}}">
+        <view class="cu-item" wx:for="{{commentItem}}">
+          <view class="cu-avatar round" style="background-image:url({{item.avatar}});"></view>
           <view class="content">
-            <view class="text-grey">莫甘娜</view>
-            <view class="text-gray text-content text-df">
-              凯尔，你被自己的光芒变的盲目。
-            </view>
+            <view class="text-grey">{{item.name}}</view>
+            <view class="text-gray text-content text-df">{{item.content}}</view>
             <view class="margin-top-sm flex justify-between">
-              <view class="text-gray text-df">2018年12月4日</view>
-              <view>
+              <view class="text-gray text-df">{{item.date}}</view>
+              <view style="display: none;">
                 <text class="cuIcon-appreciatefill text-red"></text>
                 <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
               </view>
             </view>
           </view>
         </view>
-        <view class="cu-item">
-          <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
-          <view class="content">
-            <view class="text-grey">凯尔</view>
-            <view class="text-gray text-content text-df">
-              妹妹，如果不是为了飞翔，我们要这翅膀有什么用?
-            </view>
-            <view class="margin-top-sm flex justify-between">
-              <view class="text-gray text-df">2018年12月4日</view>
-              <view>
-                <text class="cuIcon-appreciate text-gray"></text>
-                <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
+    </view>
   </view>
   </block>
 
-<view class="cu-bar bg-white tabbar border fixed bottom left shop" style="top:auto;">
+<view class="cu-bar bg-white tabbar border fixed bottom left shop" style="top:auto;display: none;">
 	<button class="action" open-type="contact">
 	  <view class="cuIcon-service text-green">
 	    <view class="cu-tag badge"></view>

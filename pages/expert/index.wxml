@@ -7,12 +7,11 @@
 		<view class="auto pl30">
 			<view class="flex column jcsa" style="height: 100%;">
 				<view class="auto">
-					<view class="fs32 ftc">{{item.name}}</view>
-					<view class="fs28">{{item.description}}</view>
+					<view class="fs32 ftc"><text class="mr30">{{item.name}}</text><text>{{item.type}}</text></view>
+					<view class="fs28">擅长领域：{{item.area}}</view>
 				</view>
 				<view class="base">
-					<view class="fl fs28 fic">13890l浏览</view>
-					<view class="fr"></view>
+					<view class="fs28">专家简介：{{item.description}}</view>
 				</view>
 			</view>
 		</view>

@@ -11,8 +11,7 @@
 	  				<view class="fs30 mb10 fw ftc nowarp1">{{item.title}}</view>
 	  				<view class="fs28 mb20 nowarp1" style="color:red;">起止时间：{{item.startTime}}-{{item.endTime}}</view>
 	  				<view class="flex itemBox2-item-people">
-	  					<view class="base people"><image class="image" mode="aspectFill" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg"></image></view>
-	  					<view class="auto fs28 fw pl20"><text class="mr20">{{item.preacher}}</text><text>教授</text><text class="fr color2">立即报名</text></view>
+	  					<view class="auto fs28 fw"><text class="mr20">{{item.preacher}}</text><text>教授</text><text class="fr color2">立即报名</text></view>
 	  				</view>
 	  			</view>
   			</view>
@@ -30,8 +29,7 @@
   				<view class="fs30 mb10 fw ftc nowarp1">{{item.title}}</view>
   				<view class="fs28 mb20 ftc nowarp1">起止时间：{{item.startTime}}-{{item.endTime}}</view>
   				<view class="flex itemBox1-item-people">
-  					<view class="base people"><image class="image" src="{{item.img}}"></image></view>
-  					<view class="fs28 fw pl20"><text class="mr20">{{item.preacher}}</text><text>{{item.preacherIdentity}}</text></view>
+  					<view class="fs28 fw"><text class="mr20">{{item.preacher}}</text><text>{{item.preacherIdentity}}</text></view>
   				</view>
   			</view>
   			<view class="base itemBox1-item-img">

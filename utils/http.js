@@ -101,6 +101,7 @@ var getToken = function() {
             wx.setStorageSync('token', '');
           } else {
             wx.setStorageSync('token', 'bearer' + result.access_token); //把token存入缓存，请求接口数据时要用
+            wx.setStorageSync('userId', result.userId);
           }
           var globalData = getApp().globalData;
           globalData.isLanding = false;

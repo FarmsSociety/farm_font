@@ -60,7 +60,7 @@ Page({
   _formatListData(list) {
     return list.map((item) => {
       var preacherIdentity = item.preacherIdentity;
-      item.preacherIdentity = preacherIdentity == 1 ? '专家' : (preacherIdentity == 1 ? '教授' : '普通人员');
+      item.preacherIdentity = preacherIdentity == 1 ? '专家' : (preacherIdentity == 2 ? '教授' : '普通人员');
       return item;
     })
   },

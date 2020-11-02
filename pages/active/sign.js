@@ -3,23 +3,23 @@ var config = require("../../utils/config.js");
 const app = getApp();
 Page({
   data: {
-    serviceId:"",
+    activityId:"",
     avatar:"",
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let serviceId = options.id;
-    // let serviceId = '1304429312810778625';
-    this.setData({ serviceId: serviceId });
+    let activityId = options.id;
+    // let activityId = '1321633664163172354';
+    this.setData({ activityId: activityId });
     // this.getScienceInfo();
   },
   formSubmit: function (e){
     let _this = this;
     let signInfo = e.detail.value;
     signInfo.sex = signInfo.sex ? 0 : 1;
-    signInfo.serviceId = this.data.serviceId;
+    signInfo.activityId = this.data.activityId;
     signInfo.avatar     = this.data.avatar;
     if (signInfo.name == "") {
       this.showMessModal("请输入您的姓名");
@@ -43,13 +43,13 @@ Page({
     }
     var params = {
       domain: "wxdomain",
-      url: "/science/service/scienceSignUp",
+      url: "/science/activity/participateActivity",
       method: "POST",
       data: signInfo,
       callBack: (res) => {
         if (res.status == 0) {
           wx.showToast({
-            title: '报名成功！',
+            title: '申请参与成功！',
             icon: 'success',
             duration: 2000
           });

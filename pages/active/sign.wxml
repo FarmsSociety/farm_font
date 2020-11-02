@@ -5,7 +5,7 @@
 			<view class="cuIcon-add cuIcon-add-upload radius bg-gray" style='overflow:hidden;' bindtap="ChooseImage"></view>
 		</view>
 		<view wx:else>
-			<view class="cuIcon-add-upload bg-gray radius" style="background-image: url({{avatar}});background-size: cover;"></view>
+			<view class="cuIcon-add-upload bg-gray radius"  bindtap="ChooseImage" style="background-image: url({{avatar}});background-size: cover;"></view>
 		</view>
 	</view>
 	<view class="cu-form-group margin-top">
@@ -46,6 +46,6 @@
 		<textarea name="remark" placeholder="请输入备注信息"></textarea>
 	</view>
 	<view class="padding-xl">
-		<button form-type='submit' class="cu-btn block bg-blue margin-tb-sm lg">确认报名</button>
+		<button form-type='submit' class="cu-btn block bg-blue margin-tb-sm lg">提交申请</button>
 	</view>
 </form>

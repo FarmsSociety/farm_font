@@ -5,4 +5,5 @@
 	font-size:70rpx;
 	width:70rpx;
 	height:70rpx;
+	overflow: hidden;
 }

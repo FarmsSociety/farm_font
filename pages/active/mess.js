@@ -13,35 +13,33 @@ Page({
 
     uploadImg:"",
     content:"",
-
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let id = options.id;
-    // let id = '1304429312810778625';
+    // let id = '1321633664163172354';
     this.setData({id: id});
-    this.getActiveInfo();
-    this.getActiveComment();
+    this.getActiveList();
   },
-  getActiveInfo:function(){
+  getActiveList:function(){
     var params = {
       domain: "wxdomain",
-      url: "/science/service/info",
+      url: "/science/activity/getSignUpActivityList",
       method: "GET",
       data: {
-        id: this.data.id,
+        id: wx.getStorageSync("userId"),
       },
       callBack: (res) => {
         if( res.status == 0 ){
           //图片设置
           var data = res.data;
-          var img = data['imgUrl'];
+          var img = data['publicizeImgUrl'];
           if( img ){
-            data['imgUrl'] = img.split(",");
+            data['publicizeImgUrl'] = img.split(",");
+            console.log( data['publicizeImgUrl'] );
           }
-          data['preacherIdentity'] = data['preacherIdentity'] == 1 ? "专家" : ( (data['preacherIdentity'] == 2) ? "教授" : "普通人员" );
           this.setData({
             info: data,
           });
@@ -53,10 +51,10 @@ Page({
   getActiveComment:function(){
     var params = {
       domain: "wxdomain",
-      url: "/science/service/listByScienceId",
+      url: "/science/evaluate/listByActivityId",
       method: "GET",
       data: {
-        scienceId: this.data.id,
+        activityId: this.data.id,
       },
       callBack: (res) => {
         if( res.status == 0 ){
@@ -70,12 +68,13 @@ Page({
   },
   toJoinActive:function(){
     wx.navigateTo({
-      url: '/pages/science/sign?id=' + this.data.id,
+      url: '/pages/active/sign?id=' + this.data.id,
     })
   },
   ChooseImage() {
     let that = this;
     app.wxUploadImg(function (res, v) {
+      console.log( res );
         that.setData({
             uploadImg: res
         });
@@ -84,7 +83,7 @@ Page({
   formSubmit: function (e){
     let _this = this;
     let signInfo = e.detail.value;
-    signInfo.serviceId = this.data.id;
+    signInfo.activityId = this.data.id;
     signInfo.userId = wx.getStorageSync("userId");
     if (signInfo.content == "") {
       this.showMessModal("输入评论不能为空！");
@@ -92,7 +91,7 @@ Page({
     }
     var params = {
       domain: "wxdomain",
-      url: "/science/service/addScienceEvaluation",
+      url: "/science/evaluate/publish",
       method: "POST",
       data: signInfo,
       callBack: (res) => {
@@ -123,4 +122,5 @@ Page({
       content: str
     });
   },
+
 })

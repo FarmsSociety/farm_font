@@ -9,6 +9,7 @@ Page({
 
     info:{},
     id: 0,
+    commentItem:[],
   },
   tabSelect(e) {
     console.log(e);
@@ -22,10 +23,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let id = options.id;
-    let id = '1';
+    let id = options.id;
+    // let id = '1';
     this.setData({id: id});
     this.getExpertInfo();
+    this.getExpertComment();
   },
   getExpertInfo:function(){
     var params = {
@@ -36,14 +38,34 @@ Page({
         id: this.data.id,
       },
       callBack: (res) => {
-        this.setData({
-          info: res,
-        });
+          var data = res.data;
+          var img = data['iconUrl'];
+          data['iconUrl'] = img.split(",");
+          this.setData({
+            info: data,
+          });
       }
     };
     http.request(params);
   },
-
+  //评论列表
+  getExpertComment:function(){
+    var params = {
+      domain: "wxdomain",
+      url: "/science/expert/expertEvaluatelist",
+      method: "GET",
+      data: {
+        id: this.data.id,
+      },
+      callBack: (res) => {
+          var data = res.data.records;
+          this.setData({
+            commentItem: data,
+          });
+      }
+    };
+    http.request(params);
+  }
 
 
 })

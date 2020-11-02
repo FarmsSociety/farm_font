@@ -14,6 +14,7 @@ Page({
   },
   //获取科技服务
   getExpertList() {
+    let that = this;
     //加载轮播图
     var params = {
       domain: "wxdomain",
@@ -24,8 +25,10 @@ Page({
         pageSize: 10
       },
       callBack: (res) => {
+        let list = that._formatListData(res.data.records);
+        console.log(JSON.stringify( list ) );
         this.setData({
-          expertItem: res.data.records,
+          expertItem: list,
           pageTotal: res.data.total
         });
       }
@@ -38,7 +41,13 @@ Page({
       url: '/pages/expert/info?id=' + e.currentTarget.dataset.id,
     })
   },
-
+  _formatListData(list) {
+    return list.map((item) => {
+      var type = item.type;
+      item.type = type == 1 ? '专家' : (type == 2 ? '教授' : '普通人员');
+      return item;
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

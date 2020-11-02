@@ -1,0 +1,28 @@
+<!-- 专家列表展示 -->
+<template wx:if="{{memberItem}}"></template>
+<view class="cu-card dynamic mb30 no-card" wx:for="{{memberItem}}">
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{item.avatar}});"></view>
+        <view class="content flex-sub">
+          <view>{{item.name}}</view>
+          <view class="text-gray text-sm flex justify-between">加入时间：{{item.joinTime}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="text-content grid fs30 col-2">
+    	<view>联系方式：{{item.phoneNum}}</view>
+    	<view>邮箱：{{item.email}}</view>
+    </view>
+    <template v-if="item.imgUrl.length>0">
+    <view class="grid flex-sub padding-lr {{item.imgUrl.length == 1?'col-1':'col-3 grid-square'}}">
+      <view class="bg-img" style="background-image:url({{itemName}});" wx:for="{{item.imgUrl}}" wx:for-index="idx" wx:for-item="itemName">
+      </view>
+    </view>
+    </template>
+    <view class="text-gray text-sm padding pt0">
+   		<view class="fs28 fpc">地址：{{item.addr}}</view>
+    </view>
+  </view>
+</view>

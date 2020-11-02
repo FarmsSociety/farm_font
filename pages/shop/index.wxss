@@ -167,7 +167,7 @@ swiper.pic-swiper .banner {
 
 .title {
   position: relative;
-  height: 64rpx;
+  /* height: 64rpx; */
   line-height: 64rpx;
   font-size: 32rpx;
   padding:40rpx 0 10rpx 30rpx;
@@ -230,7 +230,7 @@ line-height:44rpx;
   margin: auto;
   height: auto;
   width: calc(100% - 40rpx);
-  padding:0 20rpx;
+  /* padding:0 20rpx; */
   display: flex;
   flex-wrap:wrap;
   justify-content: space-around;

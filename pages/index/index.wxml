@@ -32,7 +32,7 @@
     </view>
 
     <view class="pr15 mb30 pl15">
-      <navigator url="/pages/expert/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
+      <navigator url="/pages/member/index" hover-class="none" class="bg0 padding radius text-center shadow-blur">
         <view style="width:80rpx;height: 80rpx;margin: auto;"><image src="../../images/tabbar/icon_4.png" class="image" mode="widthFix"></image></view>
         <view class="fs30 pt15">会员风采</view>
       </navigator>

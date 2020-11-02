@@ -1,19 +1,20 @@
 {
   "pages": [
-    "pages/active/info",
-    "pages/active/index",
     "pages/index/index",
-    "pages/expert/index",
-    "pages/science/sign",
+    "pages/active/mess",
+    "pages/member/index",
     "pages/science/info",
     "pages/science/index",
-    
     "pages/expert/info",
+    "pages/expert/index",
+    "pages/user/user",
+    "pages/active/sign",
+    "pages/active/info",
+    "pages/active/index",
+    "pages/science/sign",
     "pages/shop/index",
     "pages/center/index",
-    
     "pages/logs/logs",
-    "pages/user/user",
     "pages/basket/basket",
     "pages/category/category",
     "pages/search-page/search-page",

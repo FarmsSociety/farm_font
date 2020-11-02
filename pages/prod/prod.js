@@ -410,18 +410,24 @@ Page({
    * 跳转到首页
    */
   toHomePage: function() {
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/index/index',
     })
+    // wx.switchTab({
+    //   url: '/pages/index/index',
+    // })
   },
 
   /**
    * 跳转到购物车
    */
   toCartPage: function() {
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/basket/basket',
     })
+    // wx.switchTab({
+    //   url: '/pages/basket/basket',
+    // })
   },
 
   /**
